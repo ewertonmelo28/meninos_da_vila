@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{%  load static %}
+{% block content %}
+<div class="col-8 mt-3 mx-auto">
+    <table class="table table-striped border">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Serviços</th>
+                <th scope="col">Valores</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dbs in db %}
+            <tr>
+                <td>{{ dbs.id }}</td>
+                <td>{{ dbs.servico }}</td>
+                <td>{{ dbs.valor }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{%  load static %}
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col d-flex ">
+            <div class="divulgacao-home text-right">
+                texto bonito para divulgação da barbearia texto bonito para divulgação da barbearia texto bonito para divulgação da barbearia texto bonito para divulgação da barbearia texto bonito para divulgação da barbearia texto bonito para divulgação da barbearia 
+                </div>
+        </div>
+        <div class="col text-center">
+            <img src="{% static 'img/barber.jpg' %}" height="80%" alt="">
+        </div>
+    </div>
+    <hr><hr>
+    <div class="row d-flex align-items-stretch">
+        <div class="col text-right">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2582.870934805462!2d-46.766355167408435!3d-23.721294598306688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4decf0cfcd9b%3A0x48b3ee64fee25ae6!2sOs%20Meninos%20da%20Vila%20Cabeleireiro!5e0!3m2!1spt-BR!2sbr!4v1651284482498!5m2!1spt-BR!2sbr"
+                width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col text-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+            </svg>
+            Localização:
+            <br>
+            Av. Taquandava, 414
+            <br>
+            Cidade Ipava
+            <br>
+            São Paulo - SP
+            <br>
+            04950-000
+        </div>
+    </div>
+</div>
+{% endblock %}
