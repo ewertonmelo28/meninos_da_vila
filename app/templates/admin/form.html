@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{%  load static %}
+{% block content %}
+<h3>Cadastro Catalogo</h3>
+
+<p class="load">
+    Preencha todo os campos obrigatórios.
+</p>
+
+<hr>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-dark">Cadastrar</button>
+
+</form>
+{% endblock %}
