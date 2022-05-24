@@ -16,11 +16,13 @@ Including another URLconf
 from unicodedata import name
 from django.contrib import admin
 from django.urls import path
-from app.views import home,catalogo,CatalogoCreate
+from app.views import CatalogoList, agendamento, home, CatalogoCreate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name='home'),
-    path('catalogo',catalogo,name='catalogo'),
+    path('catalogo',CatalogoList.as_view(),name='catalogo'),
     path('catalogo/create/',CatalogoCreate.as_view(),name='catalogo-create'),
+    path('agendamento',agendamento,name='agendamento'),
+
 ]
