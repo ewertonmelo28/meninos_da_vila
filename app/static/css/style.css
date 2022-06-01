@@ -5,3 +5,6 @@ font-family: Arial, Helvetica, sans-serif;
 .divulgacao-home{
     font-size: 20px;
 }
+
+.django-social{list-style: none; float: right;}
+

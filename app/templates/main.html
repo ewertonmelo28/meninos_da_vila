@@ -17,7 +17,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Meninos da Vila</a>
+        <a class="navbar-brand" href="/">Meninos da Vila</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar"
             aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
@@ -33,14 +33,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/agendamento">Agendamento</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contato</a>
+                </li>              
+            </ul>            
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 50px;">
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Sair</a></li> 
+                {% else %}             
+                <li class="nav-item"><a style="margin-right: 30px;" class="nav-link" href="{% url 'login' %}">Entrar</a></li> 
+                <li class="dropdown">
+                  <a class="navbar-text" data-toggle="dropdown" style="margin-right: 50px;" 
+                   href="#" id="textoNavbar">Área Restrita</a>
+                  <ul class="dropdown-menu navbar-dark bg-dark">
+                    <li><a class="dropdown-item" href="{% url 'accounts:register' %}">Cadastrar usuário</a></li>                  
+                    <li><a class="dropdown-item" href="{% url 'accounts:index' %}">Alterar dados usuário</a></li>                  
+                  </ul>
+                </li> 
+                {% endif %}          
             </ul>
-            <span class="navbar-text">
-                <a href="#">Área restrita</a>
-            </span>
-        </div>
+        </div>        
     </nav>
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}  
+  
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

@@ -1,6 +1,70 @@
 {% extends 'main.html' %}
 {%  load static %}
 {% block content %}
+<div class="nav-link" style="float: right;">
+    {% if user.is_authenticated %}
+    <li>Olá, {{ user }}, seja bem vindo(a).</li>
+    {% else %}
+    <li>Até a próxima. Vejo você em breve.</li>
+    {% endif %}       
+</div>
+<div>
+    <li class="nav-link" style="float: left;">                   
+        <title>Date and Time</title>
+        <SCRIPT LANGUAGE="JAVASCRIPT" >
+            var now = new Date();
+            var mName = now.getMonth() +1 ;
+            var dName = now.getDay() +1;
+            var dayNr = now.getDate();
+            var yearNr=now.getYear();
+            if(dName==1) {Day = "Domingo";}
+            if(dName==2) {Day = "Segunda-feira";}
+            if(dName==3) {Day = "Terça-feira";}
+            if(dName==4) {Day = "Quarta-feira";}
+            if(dName==5) {Day = "Quinta-feira";}
+            if(dName==6) {Day = "Sexta-feira";}
+            if(dName==7) {Day = "Sábado";}
+            if(mName==1){Month = "Janeiro";}
+            if(mName==2){Month = "Fevereiro";}
+            if(mName==3){Month = "Março";}
+            if(mName==4){Month = "Abril";}
+            if(mName==5){Month = "Maio";}
+            if(mName==6){Month = "Junho";}
+            if(mName==7){Month = "Julho";}
+            if(mName==8){Month = "Agosto";}
+            if(mName==9){Month = "Setembro";}
+            if(mName==10){Month = "Outubro";}
+            if(mName==11){Month = "Novembro";}
+            if(mName==12){Month = "Dezembro";}
+            if(yearNr < 2000) {Year = 1900 + yearNr;}
+            else {Year = yearNr;}
+            var todaysDate =(" " + Day + ", " + dayNr + " de " + Month + " de " + Year);
+            document.write('  '+todaysDate);
+        </SCRIPT></span> 
+        <SPAN ID="Clock">00:00:00</SPAN>
+        
+        <SCRIPT LANGUAGE="JavaScript">
+            var Elem = document.getElementById("Clock");
+            function Horario(){ 
+            var Hoje = new Date(); 
+            var Horas = Hoje.getHours(); 
+            if(Horas < 10){ 
+                Horas = "0"+Horas; 
+            } 
+            var Minutos = Hoje.getMinutes(); 
+            if(Minutos < 10){ 
+                Minutos = "0"+Minutos; 
+            } 
+            var Segundos = Hoje.getSeconds(); 
+            if(Segundos < 10){ 
+                Segundos = "0"+Segundos; 
+            } 
+            Elem.innerHTML = Horas+":"+Minutos+":"+Segundos; 
+            } 
+            window.setInterval("Horario()",1000);
+        </SCRIPT>                   
+    </li>               
+</div>
 <div class="container mt-3">
     <div class="row">
         <div class="col d-flex ">
@@ -12,6 +76,27 @@
             <img src="{% static 'img/barber.jpg' %}" height="80%" alt="">
         </div>
     </div>
+
+    <div>
+        <ul style="float: right; ">
+            <li  class="nav-link" style="display: inline-block;">
+                <a href="https://api.whatsapp.com/send?phone=5519999999999&text=Texto%20aqui"
+                target="_blank">
+                <svg enable-background="new 0 0 512 512" width="30" height="30" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M256.064,0h-0.128l0,0C114.784,0,0,114.816,0,256c0,56,18.048,107.904,48.736,150.048l-31.904,95.104  l98.4-31.456C155.712,496.512,204,512,256.064,512C397.216,512,512,397.152,512,256S397.216,0,256.064,0z" fill="#4CAF50"/><path d="m405.02 361.5c-6.176 17.44-30.688 31.904-50.24 36.128-13.376 2.848-30.848 5.12-89.664-19.264-75.232-31.168-123.68-107.62-127.46-112.58-3.616-4.96-30.4-40.48-30.4-77.216s18.656-54.624 26.176-62.304c6.176-6.304 16.384-9.184 26.176-9.184 3.168 0 6.016 0.16 8.576 0.288 7.52 0.32 11.296 0.768 16.256 12.64 6.176 14.88 21.216 51.616 23.008 55.392 1.824 3.776 3.648 8.896 1.088 13.856-2.4 5.12-4.512 7.392-8.288 11.744s-7.36 7.68-11.136 12.352c-3.456 4.064-7.36 8.416-3.008 15.936 4.352 7.36 19.392 31.904 41.536 51.616 28.576 25.44 51.744 33.568 60.032 37.024 6.176 2.56 13.536 1.952 18.048-2.848 5.728-6.176 12.8-16.416 20-26.496 5.12-7.232 11.584-8.128 18.368-5.568 6.912 2.4 43.488 20.48 51.008 24.224 7.52 3.776 12.48 5.568 14.304 8.736 1.792 3.168 1.792 18.048-4.384 35.52z" fill="#FAFAFA"/></svg></a>
+            </li>
+            <li  class="nav-link" style="display: inline-block;">
+                <a href="https://www.facebook.com/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/>
+                </svg></a>
+            </li>
+            <li  class="nav-link" style="display: inline-block;">
+                <a href="https://www.youtube.com/watch?v=YYScJwvlFog" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 64 64"><path fill="#C8131A" d="M31.999.999C14.879.999 1 14.878 1 32c0 17.12 13.879 31.001 30.999 31.001C49.121 63.001 63 49.12 63 32 63 14.878 49.121.999 31.999.999zM25 41.543V22.458l18.225 9.575L25 41.543z"/><g fill="#E01726"><path d="M41.926 32.724L27 40.499l.331 3.307L45.3 34.467zM3.271 34.435c0-17.122 13.879-31.001 30.999-31.001 8.363 0 15.948 3.317 21.524 8.701C50.108 5.33 41.561.999 31.999.999 14.879.999 1 14.878 1 32c0 8.758 3.638 16.662 9.478 22.301a30.872 30.872 0 01-7.207-19.866z"/></g><path fill="#8E0919" d="M43.216 32.051l-1.846.962-16.297 8.534 19.009 19.009a31.113 31.113 0 0 0 14.695-12.943L43.216 32.051z"/></svg></a>
+            </li>
+            
+        </ul>                   
+    </div>
+    
     <hr><hr>
     <div class="row d-flex align-items-stretch">
         <div class="col text-right">
@@ -19,7 +104,7 @@
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2582.870934805462!2d-46.766355167408435!3d-23.721294598306688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4decf0cfcd9b%3A0x48b3ee64fee25ae6!2sOs%20Meninos%20da%20Vila%20Cabeleireiro!5e0!3m2!1spt-BR!2sbr!4v1651284482498!5m2!1spt-BR!2sbr"
                 width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        </div>        
         <div class="col text-left">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                 class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
@@ -35,6 +120,6 @@
             <br>
             04950-000
         </div>
-    </div>
+    </div>    
 </div>
 {% endblock %}
