@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ profissional.nome }}</td>
                 <td>{{ profissional.telefone }}</td>
-                <td> <a class="btn btn-dark" href="//{{ profissional.agenda }}">Link</a></td>
+                <td> <a class="btn btn-dark" href="{{ profissional.agenda }}">Link</a></td>
                 {% if user.is_authenticated %}
                 <td>
                     <a href="{% url 'agendamento-editar' profissional.pk %}" class="btn btn-warning btn-sm" title="Editar"><i class="material-icons">create</i></a>
