@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, CreateView
-from app.models import Catalogo
+from app.models import Catalogo, Profissional
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
@@ -38,13 +38,20 @@ def contact(request):
 class CatalogoCreate(CreateView):
     model = Catalogo
     fields = ['servico','valor']
-    template_name = 'admin/form.html'
+    template_name = 'admin/form_create_edit_catalogo.html'
     success_url = reverse_lazy('catalogo')
 
 class CatalogoList(ListView):
     model = Catalogo
     template_name = 'catalogo.html'
 
-def agendamento(request):
-    return render(request,'agendamento.html')
+class ProfissionalCreate(CreateView):
+    model = Catalogo
+    fields = ['servico','valor']
+    template_name = 'admin/form_create_edit_catalogo.html'
+    success_url = reverse_lazy('catalogo')
+    
+class ProfissionalList(ListView):
+    model = Profissional
+    template_name = 'agendamento.html'    
 

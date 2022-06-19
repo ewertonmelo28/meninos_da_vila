@@ -41,15 +41,7 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Sair</a></li> 
                 {% else %}             
-                <li class="nav-item"><a style="margin-right: 30px;" class="nav-link" href="{% url 'login' %}">Entrar</a></li> 
-                <li class="dropdown">
-                  <a class="navbar-text" data-toggle="dropdown" style="margin-right: 50px;" 
-                   href="#" id="textoNavbar">Área Restrita</a>
-                  <ul class="dropdown-menu navbar-dark bg-dark">
-                    <li><a class="dropdown-item" href="{% url 'accounts:register' %}">Cadastrar usuário</a></li>                  
-                    <li><a class="dropdown-item" href="{% url 'accounts:index' %}">Alterar dados usuário</a></li>                  
-                  </ul>
-                </li> 
+                <li class="nav-item"><a style="margin-right: 30px;" class="nav-link" href="{% url 'login' %}">Área Restrita</a></li> 
                 {% endif %}          
             </ul>
         </div>        

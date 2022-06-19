@@ -1,13 +1,8 @@
 {% extends 'main.html' %}
 {%  load static %}
 {% block content %}
-<div class="nav-link" style="float: right;">
-    {% if user.is_authenticated %}
-    <li>Olá, {{ user }}, seja bem vindo(a).</li>
-    {% else %}
-    <li>Até a próxima. Vejo você em breve.</li>
-    {% endif %}       
-</div>
+<div class="container mt-3">
+    <div class="row">
 <div>
     <li class="nav-link" style="float: left;">                   
         <title>Date and Time</title>
@@ -63,9 +58,10 @@
             } 
             window.setInterval("Horario()",1000);
         </SCRIPT>                   
-    </li>               
+    </li>
+</div>               
 </div>
-<div class="container mt-3">
+
     <div class="row">
         <div class="col d-flex ">
             <div class="divulgacao-home text-right">
@@ -76,8 +72,8 @@
             <img src="{% static 'img/barber.jpg' %}" height="80%" alt="">
         </div>
     </div>
-
-    <div>
+{% comment %} Link para redes sociais {% endcomment %}
+    {% comment %} <div>
         <ul style="float: right; ">
             <li  class="nav-link" style="display: inline-block;">
                 <a href="https://api.whatsapp.com/send?phone=5519999999999&text=Texto%20aqui"
@@ -95,7 +91,7 @@
             </li>
             
         </ul>                   
-    </div>
+    </div> {% endcomment %}
     
     <hr><hr>
     <div class="row d-flex align-items-stretch">
@@ -105,7 +101,7 @@
                 width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>        
-        <div class="col text-left">
+        <div class="col text-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                 class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />

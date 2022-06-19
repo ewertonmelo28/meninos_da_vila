@@ -1,40 +1,24 @@
 {% extends 'main.html' %}
 {%  load static %}
 {% block content %}
-<div class="col-8 mt-3 mx-auto">
-    <form class="row g-3">
-        <div>
-            <label class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome">
-        </div>
-        <div>
-            <label class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="telefone">
-        </div>
-        <div>
-            <label class="form-label">Profissional</label>
-            <select id="data_agenda" class="form-select">
-                <option selected>Escolha um profissional</option>
-                <option>...</option>
-            </select>
-        </div>
-        <div>
-            <label class="form-label">Datas disponiveis</label>
-            <select id="data_agenda" class="form-select">
-                <option selected>Escolha uma data</option>
-                <option>...</option>
-            </select>
-        </div>
-        <div>
-            <label class="form-label">Horarios disponiveis:</label>
-            <select id="hora_agenda" class="form-select">
-                <option selected>Escolha um horario</option>
-                <option>...</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-dark ">Finalizar agendamento</button>
-        </div>
-    </form>
+<div style="width: 80%" class="mx-auto mt-3 table-responsive">
+    <table class="table table-striped border">
+        <thead>
+            <tr>
+                <th scope="col">Profissional</th>
+                <th scope="col">Contato</th>
+                <th scope="col">Agenda</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dbs in object_list %}
+            <tr>
+                <td>{{ dbs.nome }}</td>
+                <td>{{ dbs.telefone }}</td>
+                <td> <a class="btn btn-dark" href="//{{ dbs.agenda }}">Link</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

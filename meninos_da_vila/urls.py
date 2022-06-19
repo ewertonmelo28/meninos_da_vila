@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 from django.contrib.auth.views import LoginView, LogoutView
-from app.views import CatalogoList, agendamento, CatalogoCreate
+from app.views import CatalogoList, CatalogoCreate , ProfissionalList, ProfissionalCreate
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),     
@@ -30,8 +30,8 @@ urlpatterns = [
     url(r'^conta/', include('accounts.urls', namespace='accounts')),  
     path('catalogo',CatalogoList.as_view(),name='catalogo'),
     path('catalogo/create/',CatalogoCreate.as_view(),name='catalogo-create'),
-    path('agendamento',agendamento,name='agendamento'), 
-    url(r'^admin/', admin.site.urls),    
-   
-
+    path('agendamento',ProfissionalList.as_view(),name='agendamento'),
+    path('agendamento/create/',ProfissionalCreate.as_view(),name='agendamento-create'),
+    url(r'^admin/', admin.site.urls),
+    
 ]
