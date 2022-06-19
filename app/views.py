@@ -75,7 +75,7 @@ class ProfissionalList(ListView):
 class ProfissionalUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     model = Profissional
-    fields = ['servico','valor']
+    fields = ['nome','telefone', 'agenda']
     template_name = 'admin/form.html'
     success_url = reverse_lazy('agendamento')
     
