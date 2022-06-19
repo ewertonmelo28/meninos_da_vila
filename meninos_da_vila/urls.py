@@ -20,18 +20,23 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 from django.contrib.auth.views import LoginView, LogoutView
-from app.views import CatalogoList, CatalogoCreate , ProfissionalList, ProfissionalCreate
+from app.views import CatalogoDelete, CatalogoList, CatalogoCreate, CatalogoUpdate, ProfissionalDelete , ProfissionalList, ProfissionalCreate, ProfissionalUpdate
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     url(r'^$', views.index, name="index"),     
     url(r'^contato/$', views.contact, name="contact"),
     url(r'^entrar/$', LoginView.as_view(template_name='login.html'), name='login'), 
     url(r'^sair/$', LogoutView.as_view(next_page = 'index'), name='logout'),    
     url(r'^conta/', include('accounts.urls', namespace='accounts')),  
     path('catalogo',CatalogoList.as_view(),name='catalogo'),
-    path('catalogo/create/',CatalogoCreate.as_view(),name='catalogo-create'),
+    path('catalogo/criar/',CatalogoCreate.as_view(),name='catalogo-criar'),
+    path('catalogo/editar/<int:pk>/',CatalogoUpdate.as_view(),name='catalogo-editar'),
+    path('catalogo/excluir/<int:pk>/',CatalogoDelete.as_view(),name='catalogo-excluir'),
     path('agendamento',ProfissionalList.as_view(),name='agendamento'),
-    path('agendamento/create/',ProfissionalCreate.as_view(),name='agendamento-create'),
+    path('agendamento/criar/',ProfissionalCreate.as_view(),name='agendamento-criar'),
+    path('agendamento/editar/<int:pk>/',ProfissionalUpdate.as_view(),name='agendamento-editar'),
+    path('agendamento/excluir/<int:pk>/',ProfissionalDelete.as_view(),name='agendamento-excluir'),
     url(r'^admin/', admin.site.urls),
     
 ]

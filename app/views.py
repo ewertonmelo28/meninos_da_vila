@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, CreateView
 from app.models import Catalogo, Profissional
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import ContactForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from django.contrib.auth import get_user_model
 
@@ -35,23 +37,50 @@ def contact(request):
     }
     return render(request, 'contact.html', context)
 
-class CatalogoCreate(CreateView):
+class CatalogoCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Catalogo
     fields = ['servico','valor']
-    template_name = 'admin/form_create_edit_catalogo.html'
+    template_name = 'admin/form.html'
     success_url = reverse_lazy('catalogo')
 
 class CatalogoList(ListView):
     model = Catalogo
     template_name = 'catalogo.html'
 
-class ProfissionalCreate(CreateView):
+class CatalogoUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = Catalogo
     fields = ['servico','valor']
-    template_name = 'admin/form_create_edit_catalogo.html'
+    template_name = 'admin/form.html'
     success_url = reverse_lazy('catalogo')
+    
+class CatalogoDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    model = Catalogo
+    template_name = 'admin/form_delete.html'
+    success_url = reverse_lazy('catalogo')
+
+class ProfissionalCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = Profissional
+    fields = ['nome','telefone', 'agenda']
+    template_name = 'admin/form.html'
+    success_url = reverse_lazy('agendamento')
     
 class ProfissionalList(ListView):
     model = Profissional
     template_name = 'agendamento.html'    
 
+class ProfissionalUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = Profissional
+    fields = ['servico','valor']
+    template_name = 'admin/form.html'
+    success_url = reverse_lazy('agendamento')
+    
+class ProfissionalDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    model = Profissional
+    template_name = 'admin/form_delete.html'
+    success_url = reverse_lazy('agendamento')

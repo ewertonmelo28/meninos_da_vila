@@ -7,15 +7,16 @@
 {% block content %}
 <div class="col-8 mt-3 mx-auto">
 
-    <h3>Cadastro Catalogo</h3>
+    <h3>Excluir</h3>
 
     <p class="load">
-        Preencha todo os campos obrigatórios.
+        Confirme para excluir os dados.
     </p>
 
     <hr>
 
     <form class="row g-3" action="" method="post">
+        <p>Deseja excluir o registro: <b>{{object}}</b> </p>
         {% csrf_token %}
         <label class="form-label">
             
@@ -23,7 +24,7 @@
 
         </label>
         <div>
-            <button type="submit" class="btn btn-dark">Cadastrar</button>
+            <button type="submit" class="btn btn-danger">Excluir</button>
         </div>
     </form>
 </div>
